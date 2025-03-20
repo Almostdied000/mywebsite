@@ -6,3 +6,10 @@ author: "DHANUSH D" # Your name or author info
 # Base URL settings
 baseurl: ""  # Empty for main GitHub pages. Use "/timetable" if hosted in a subdirectory.
 url: "https://Almostdied000.github.io" # Replace <your-username> with your GitHub username
+
+# Set a custom homepage
+defaults:
+  - scope:
+      path: ""
+    values:
+      permalink: /loginpage.html
