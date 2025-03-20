@@ -1,0 +1,8 @@
+# Site Configuration for GitHub Pages
+title: "LOGINPAGE" # Your site title
+description: "nothing" # A short description
+author: "DHANUSH D" # Your name or author info
+
+# Base URL settings
+baseurl: ""  # Empty for main GitHub pages. Use "/timetable" if hosted in a subdirectory.
+url: "https://Almostdied000.github.io" # Replace <your-username> with your GitHub username
