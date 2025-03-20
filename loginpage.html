@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-image: url('https://www.sss-solutions.org/wp-content/uploads/2018/01/1116146294-login-page-background-image-112.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .title {
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .login-container {
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+            background-image: url('https://static.vecteezy.com/system/resources/thumbnails/014/468/621/small/abstract-digital-technology-background-with-concept-security-vector.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        input {
+            width: 100%;
+            padding: 5px;
+            margin: 10px 0;
+        }
+        
+         button {
+            width: 100%;
+            padding: 10px;
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .forgot-password {
+            margin-top: 5px;
+            text-align: left;
+        }
+        .forgot-password a {
+            text-decoration: none;
+            color: blue;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        #message {
+            color: white;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        .verification-container {
+            display: none;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+            border-radius: 5px;
+            width: 300px;
+            text-align: center;
+            position: relative;
+        }
+        .back-link {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: blue;
+            text-decoration: none;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="title">Almostdied Designed Page</div>
+    <div class="login-container" id="login-container">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username" required>
+        <input type="password" id="password" placeholder="Password" required>
+        <div class="forgot-password">
+            <a onclick="showVerification()">Forgot Password?</a>
+        </div>
+        <button onclick="login()">Login</button>
+        <p id="message"></p>
+    </div>
+
+    <div class="verification-container" id="verification-container">
+        <a class="back-link" onclick="goBack()">&larr; Back</a>
+        <h2>Verify Identity</h2>
+        <input type="text" id="security-question-3" placeholder="What is your nickname?">
+        <input type="text" id="security-question-4" placeholder="What is your lucky number?">
+        <button onclick="verifyIdentity()">Verify</button>
+        <p id="verification-message"></p>
+    </div>
+
+    <script>
+        function login() {
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            
+            var savedPassword = localStorage.getItem("savedPassword") || "123";
+
+            if (username === "DHANU" && password === savedPassword) {
+                window.location.href = "nextpage.html";
+            } else {
+                document.getElementById("message").innerHTML = "Invalid Username or Password.";
+            }
+        }
+
+        document.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                login();
+            }
+        });
+
+        function showVerification() {
+            document.getElementById("login-container").style.display = "none";
+            document.getElementById("verification-container").style.display = "block";
+        }
+
+        function goBack() {
+            document.getElementById("verification-container").style.display = "none";
+            document.getElementById("login-container").style.display = "block";
+        }
+
+        function verifyIdentity() {
+            var answer3 = document.getElementById("security-question-3").value.toLowerCase();
+            var answer4 = document.getElementById("security-question-4").value;
+            
+            if (answer3 === "dh" && answer4 === "15") {
+                window.location.href = "resetpassword.html";
+            } else {
+                document.getElementById("verification-message").innerHTML = "Verification failed. Try again.";
+            }
+        }
+    </script>
+</body>
+</html>
